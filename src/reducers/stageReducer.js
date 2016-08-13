@@ -3,7 +3,7 @@ export default function reducer(state={
       id: null,
       name: null
     },
-    list: [],
+    list: {},
     count:0,
     onPlay: null,
     error: null,
@@ -14,11 +14,14 @@ export default function reducer(state={
         return {...state,onPlay:action.music}
       }
       
-      case "ADD_TO_STAGE":{
-        const _stage = {...state};
-        _stage.list.push(action.payload),
-        _stage.count++;
-        return _stage;
+     case "ADD_TO_STAGE":{
+          const _list={...state.list};
+           _list[action.payload.id]=action.payload;
+            return {
+            ...state,
+            count: state.count+1,
+            list: _list,
+          }
       }
 
   }
