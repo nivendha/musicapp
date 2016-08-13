@@ -1,16 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom'
+import React from "react"
+import ReactDOM from "react-dom"
+import { Provider } from "react-redux"
 
-var CommentBox = React.createClass({
-  render: function() {
-    return (
-      <div className="commentBox">
-        Hello, world! I am a CommentBox.
-      </div>
-    );
-  }
-});
-ReactDOM.render(
-  <CommentBox />,
-  document.getElementById('main')
-);
+import Stage from "./components/Stage"
+import store from "./store"
+
+const app = document.getElementById('main');
+
+ReactDOM.render(<Provider store={store}>
+  <Stage />
+</Provider>, app);

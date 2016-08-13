@@ -26,7 +26,7 @@ const options = {
     target: PATHS.APP,
     config: {
       "presets": ["es2015", "react", "stage-0"],
-      "plugins": ["add-module-exports"]
+      "plugins": ["add-module-exports",'react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy']
     }
   },
   html:{
