@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import stage from "../actions/stageAction"
+import {addMusic, play} from "../actions/stageAction"
 
 @connect((store) => {
   return {
@@ -13,6 +13,7 @@ export default class Layout extends React.Component {
   componentWillMount() {
     //this.props.dispatch(fetchUser())
     console.log(this.props);
+    this.props.dispatch(addMusic('123',{'name':'nive'}))
   }
 
   playMusic() {

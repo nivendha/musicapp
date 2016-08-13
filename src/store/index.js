@@ -6,11 +6,6 @@ import promise from "redux-promise-middleware"
 
 import reducer from "../reducers"
 
-const middleware = applyMiddleware(promise(), thunk, logger());
-const store = createStore(reducer, middleware);
+const middleware = applyMiddleware(promise(), thunk, logger())
 
-store.subscribe(() => {
-  console.log("store changed", store.getState());
-})
-
-export default store
+export default createStore(reducer, middleware)

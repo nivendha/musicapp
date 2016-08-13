@@ -15,10 +15,10 @@ export default function reducer(state={
       }
       
       case "ADD_TO_STAGE":{
-        return {...state,
-          list:list.push(action.music),
-          count:count++
-        }
+        const _stage = {...state};
+        _stage.list.push(action.payload),
+        _stage.count++;
+        return _stage;
       }
 
   }
