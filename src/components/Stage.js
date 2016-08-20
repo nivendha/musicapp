@@ -12,7 +12,6 @@ import {addMusic, play} from "../actions/stageAction"
 export default class Layout extends React.Component {
   componentWillMount() {
     //this.props.dispatch(fetchUser())
-    console.log(this.props);
     this.props.dispatch(addMusic('123',{'name':'nive'}))
     this.props.dispatch(addMusic('223',{'name':'ndive'}))
   }
