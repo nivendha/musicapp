@@ -12,8 +12,8 @@ import {addMusic, play} from "../actions/stageAction"
 export default class Layout extends React.Component {
   componentWillMount() {
     //this.props.dispatch(fetchUser())
-    this.props.dispatch(addMusic('123',{'name':'nive'}))
-    this.props.dispatch(addMusic('223',{'name':'ndive'}))
+  //  this.props.dispatch(addMusic('123',{'name':'nive'}))
+   // this.props.dispatch(addMusic('223',{'name':'ndive'}))
   }
 
   playMusic() {
@@ -21,10 +21,10 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    const { _stg } = this.props;
+    const { stg } = this.props;
 
     return <div>
-     {_stg}
+     
     </div>
   }
 }
