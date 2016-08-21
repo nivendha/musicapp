@@ -9,6 +9,8 @@ import store from "./store"
 const app = document.getElementById('main');
 
 ReactDOM.render(<Provider store={store}>
+	<div>
   <Dock/>
   <Stage />
+  </div>
 </Provider>, app);
