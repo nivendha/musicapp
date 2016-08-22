@@ -33,7 +33,7 @@ export default class Layout extends React.Component {
 			var parser = mm(fs.createReadStream(fileName), function (err, metadata) {
 			 // if (err) throw err;
 			  console.log(metadata);
-			  _this.props.dispatch(addToList(_.last(fileName.split('\\')),fileName,metadata));
+			  _this.props.dispatch(addToList(_.last(fileName.split('/')),fileName,metadata));
 			});
 
 		    }
@@ -44,14 +44,9 @@ export default class Layout extends React.Component {
     	const {dock} = this.props;
     	const dockData=[];
     	_.forIn(dock.list, function(value, key) {
-		  console.log(key);
 		  var base64Image = new Buffer(value.music.picture[0].data, 'binary').toString('base64');
-		    var decodedImage = new Buffer(base64Image, 'base64').toString('binary');
-		    fs.writeFile('build/'+value.id+'.jpg', decodedImage, 'binary', function(err) {
-		    	console.log(arguments);
-		    });
 		  dockData.push({
-			    img: value.id+'.jpg',
+			    img: '<img style="display:block; width:100%;height:100%;" src= "data:image/jpeg;base64,'+base64Image+'"/>',
 			    title: value.name,
 			    author: value.music.album
 			  })

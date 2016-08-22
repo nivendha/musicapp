@@ -33,12 +33,12 @@ export default class GridListExampleSimple extends React.Component {
     >
       {this.props.tilesData.map((tile) => (
         <GridTile
-          key={tile.img}
           title={tile.title}
           subtitle={<span>by <b>{tile.author}</b></span>}
           actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
         >
-          <img src={tile.img} />
+                    <div dangerouslySetInnerHTML={{__html: tile.img}}>
+                    </div>
         </GridTile>
       ))}
     </GridList>
