@@ -32,9 +32,10 @@ export default class GridListExampleSimple extends React.Component {
       style={styles.gridList}
     >
       {this.props.tilesData.map((tile) => (
-        <GridTile
+        <GridTile onClick={this.props.hostPlay}
+          key={tile.id}
           title={tile.title}
-          subtitle={<span>by <b>{tile.author}</b></span>}
+          subtitle={<span><b>{tile.author}</b></span>}
           actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
         >
                     <div dangerouslySetInnerHTML={{__html: tile.img}}>

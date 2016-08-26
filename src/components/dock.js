@@ -1,25 +1,43 @@
 import React from "react"
 import { connect } from "react-redux"
-import {addToList, stageMusic} from "../actions/dockAction"
 import _ from "lodash"
-import GridListExampleSimple from "./GridListExampleSimple"
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
+import {addToList, stageMusic} from "../actions/dockAction"
+
+import Paper from 'material-ui/Paper';
+import MusicgridList from "./MusicgridList"
+import RaisedButton from 'material-ui/RaisedButton';
+
+import os from "os"
 const remote = require('electron').remote;
 const dialog = remote.require('electron').dialog;
-
 const fs = require('fs');	
 const mm = require('musicmetadata');
 
+  const divStyle = {
+  };
+
+  const pstyle = {
+      margin: 20,
+      textAlign: 'center',
+      display: 'inline-block',
+  };
 @connect((store) => {
   return {
     dock: store.dock
   };
 })
+
 export default class Layout extends React.Component {
 	constructor(props) {
     super(props);
     this.addMusicFolder = this.addMusicFolder.bind(this);
   }
+  	hostPlay(a,b){
+  		console.log(a);
+  	}
 	addMusicFolder(){
 	const _this=this;
 	dialog.showOpenDialog({ 
@@ -32,8 +50,8 @@ export default class Layout extends React.Component {
 
 			var parser = mm(fs.createReadStream(fileName), function (err, metadata) {
 			 // if (err) throw err;
-			  console.log(metadata);
-			  _this.props.dispatch(addToList(_.last(fileName.split('/')),fileName,metadata));
+			  console.log(os);
+			  _this.props.dispatch(addToList(_.last(fileName.split(os.platform()==='win32'?'\\':'/')),fileName,metadata));
 			});
 
 		    }
@@ -44,18 +62,25 @@ export default class Layout extends React.Component {
     	const {dock} = this.props;
     	const dockData=[];
     	_.forIn(dock.list, function(value, key) {
-		  var base64Image = new Buffer(value.music.picture[0].data, 'binary').toString('base64');
+    		var base64Image='';
+    		if(value.music.picture[0]){
+    		base64Image = new Buffer(value.music.picture[0].data, 'binary').toString('base64');	
+    		}
 		  dockData.push({
+		  		id:value.id,
 			    img: '<img style="display:block; width:100%;height:100%;" src= "data:image/jpeg;base64,'+base64Image+'"/>',
 			    title: value.name,
 			    author: value.music.album
 			  })
 		});
         return <div>
-        <div onClick={this.addMusicFolder}>
-       click here to import mp3
-        </div>
-        <GridListExampleSimple tilesData={dockData}/>
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <Paper style={pstyle} zDepth={1}>
+		        <div onClick={this.addMusicFolder}>
+		       		<RaisedButton label="click here to import mp3" fullWidth={true} primary={true} />
+		        </div>
+		        <MusicgridList hostPlay={this.hostPlay} tilesData={dockData}/></Paper>
+		        </MuiThemeProvider>
         </div>
     }
 }

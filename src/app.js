@@ -7,10 +7,12 @@ import Dock from "./components/dock"
 import store from "./store"
 
 const app = document.getElementById('main');
-
+const appStyle ={
+	display:'flex'
+};
 ReactDOM.render(<Provider store={store}>
-	<div>
+	<div style={appStyle}>
   <Dock/>
-  <Stage />
+  <Stage/>
   </div>
 </Provider>, app);
