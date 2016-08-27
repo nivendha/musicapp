@@ -16,7 +16,8 @@ const pstyle = {
 
 @connect((store) => {
   return {
-    stg: store.stage
+    stg: store.stage,
+    dock:store.dock
   };
 })
 
@@ -32,12 +33,14 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    const { stg } = this.props;
-
+    const { onStage,onPlay } = this.props.stg;
+    const { list } =this.props.dock;
+    const music = list[onStage];
+    const {name,info} = music || {}
     return <div>
         <MuiThemeProvider muiTheme={getMuiTheme()}>
         <Paper style={pstyle} zDepth={1}>
-        hi there
+        {name}
         </Paper>
         </MuiThemeProvider>
     </div>

@@ -32,7 +32,7 @@ export default class GridListExampleSimple extends React.Component {
       style={styles.gridList}
     >
       {this.props.tilesData.map((tile) => (
-        <GridTile onClick={this.props.hostPlay}
+        <GridTile onClick={this.props.hostPlay.bind(null,tile.id,tile)}
           key={tile.id}
           title={tile.title}
           subtitle={<span><b>{tile.author}</b></span>}

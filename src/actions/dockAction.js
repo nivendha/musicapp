@@ -1,7 +1,7 @@
 import uniqueid from "uniqueid"
 const prefix = uniqueid('m');
 
-export function addToList(name,path,music) {
+export function addToList(name,path,info) {
 const id=prefix();
   return {
     type: 'ADD_TO_DOCK',
@@ -9,7 +9,7 @@ const id=prefix();
       id,
       name,
       path,
-      music
+      info
     }
   }
 }

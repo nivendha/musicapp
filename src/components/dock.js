@@ -34,9 +34,10 @@ export default class Layout extends React.Component {
 	constructor(props) {
     super(props);
     this.addMusicFolder = this.addMusicFolder.bind(this);
+		this.hostPlay = this.hostPlay.bind(this);
   }
-  	hostPlay(a,b){
-  		console.log(a);
+  	hostPlay(id,dtl){
+  		this.props.dispatch(stageMusic(id,dtl));
   	}
 	addMusicFolder(){
 	const _this=this;
@@ -63,14 +64,14 @@ export default class Layout extends React.Component {
     	const dockData=[];
     	_.forIn(dock.list, function(value, key) {
     		var base64Image='';
-    		if(value.music.picture[0]){
-    		base64Image = new Buffer(value.music.picture[0].data, 'binary').toString('base64');	
+    		if(value.info.picture[0]){
+    		base64Image = new Buffer(value.info.picture[0].data, 'binary').toString('base64');	
     		}
 		  dockData.push({
 		  		id:value.id,
 			    img: '<img style="display:block; width:100%;height:100%;" src= "data:image/jpeg;base64,'+base64Image+'"/>',
 			    title: value.name,
-			    author: value.music.album
+			    author: value.info.album
 			  })
 		});
         return <div>
