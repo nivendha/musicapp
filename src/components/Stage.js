@@ -38,7 +38,7 @@ export default class Layout extends React.Component {
     if(!onStage){return <div></div>}
     const { list } =this.props.dock;
     const music = list[onStage];
-    const {name,info} = music || {}
+    const {name,info,path} = music || {}
     var base64Image='';
         if(info.picture[0]){
         base64Image = new Buffer(info.picture[0].data, 'binary').toString('base64');  
@@ -46,14 +46,12 @@ export default class Layout extends React.Component {
     const stageData = {
           img: '<img style="display:block; width:100%;height:100%;" src= "data:image/jpeg;base64,'+base64Image+'"/>',
           title: name,
+          source:path,
           author: info.album
         }
     return <div>
         <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <Paper style={pstyle} zDepth={1}>
-        {name}
         <StageCard data={stageData}></StageCard>
-        </Paper>
         </MuiThemeProvider>
     </div>
   }

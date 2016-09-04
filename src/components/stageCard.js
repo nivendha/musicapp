@@ -3,6 +3,12 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FlatButton from 'material-ui/FlatButton';
 
 
+import AudioPlayer from "./AudioPlayer"
+
+const cstyle = {
+  height:400    
+};
+
 export default class Layout extends React.Component {
   componentWillMount() {
     //this.props.dispatch(fetchUser())
@@ -15,11 +21,11 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    return <div>
+    return <div style={cstyle}>
        <Card>
     <CardHeader
-      title="URL Avatar"
-      subtitle="Subtitle"
+      title={this.props.data.title}
+      subtitle={this.props.data.auctor}
     />
     <CardMedia
       overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
@@ -35,8 +41,9 @@ export default class Layout extends React.Component {
       Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
     </CardText>
     <CardActions>
-      <FlatButton label="Action1" />
-      <FlatButton label="Action2" />
+    <AudioPlayer musicSrc={this.props.data.source}/>
+      <FlatButton label="play" />
+      <FlatButton label="stop" />
     </CardActions>
   </Card>
     </div>
