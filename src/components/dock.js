@@ -7,7 +7,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {addToList, stageMusic} from "../actions/dockAction"
 
 import Paper from 'material-ui/Paper';
-import MusicgridList from "./MusicgridList"
+import MusicgridList from "./MusicGridList"
 import RaisedButton from 'material-ui/RaisedButton';
 
 import os from "os"
