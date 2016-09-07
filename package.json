@@ -55,6 +55,7 @@
     "musicmetadata": "^2.0.4",
     "node-soundcloud": "0.0.5",
     "react": "^0.14.8",
+    "react-audio-player": "^0.2.5",
     "react-dom": "^0.14.8",
     "react-loading": "0.0.9",
     "react-soundplayer": "^0.3.6",
