@@ -1,3 +1,86 @@
-*{
-	content:"hi";
+
+@import './partials/variables'; // colors, fonts etc...
+
+@import './partials/layout'; // responsive grid and media queries
+
+/* -----------------------------
+
+Manage colors
+
+-------------------------------- */
+
+.cd-stroke {
+	fill: none;
+	stroke-width: 4;
+	stroke-miterlimit: 10;
+}
+
+.cd-stroke-color-1 {
+	stroke: $color-1;
+	fill: $color-4;
+
+	&#floor {
+		fill: none;
+	}
+}
+
+.cd-stroke-color-2 {
+	stroke: $color-2;
+}
+
+.cd-stroke-color-3 {
+	stroke: $color-3;
+}
+
+.cd-fill-color-1 {
+	fill: $color-1;
+}
+
+.cd-pointer {
+	fill: #FFFFFF;
+	opacity: 0;
+}
+
+/* -------------------------------- 
+
+Main elements - Loading
+
+-------------------------------- */
+
+#cd-loading {
+	opacity: 1;
+	visibility: visible;
+	-webkit-transition: opacity .3s 0s, visibility 0s 0s;
+	-moz-transition: opacity .3s 0s, visibility 0s 0s;
+	transition: opacity .3s 0s, visibility 0s 0s;
+
+	&.fade-out {
+		opacity: 0;
+		visibility: hidden;
+		-webkit-transition: opacity .3s 0s, visibility 0s .3s;
+		-moz-transition: opacity .3s 0s, visibility 0s .3s;
+		transition: opacity .3s 0s, visibility 0s .3s;
+	}
+}
+
+#cd-play-btn, #cd-pause-btn {
+	cursor: pointer;
+}
+
+#cd-pause-btn {
+	pointer-events: none;
+}
+
+.play-is-clicked #cd-pause-btn {
+	pointer-events: auto;
+}
+
+/* -------------------------------- 
+
+Main elements - Buildings 
+
+-------------------------------- */
+
+#cd-home-1-chimney, #cd-home-3-roof {
+	visibility: hidden;
 }
