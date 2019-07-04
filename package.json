@@ -6,7 +6,9 @@
   "scripts": {
     "start": "gulp build && electron build/main.js",
     "build": "gulp build",
-    "live": "gulp live"
+    "live": "gulp live",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "music"
@@ -59,6 +61,8 @@
     "react-dom": "^0.14.8",
     "react-loading": "0.0.9",
     "react-soundplayer": "^0.3.6",
-    "uniqueid": "^1.0.0"
-  }
+    "uniqueid": "^1.0.0",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
